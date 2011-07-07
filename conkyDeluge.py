@@ -163,7 +163,7 @@ class DelugeInfo:
     STATE_QUEUED = 2
     STATE_PAUSED = 1
     STATE_UNKNOWN = 0
-        
+
     def __init__(self, options):
 
         try:
@@ -172,46 +172,47 @@ class DelugeInfo:
             logging.disable(logging.FATAL)
 
             self.options = options
-
+            self.torrents_status = []
             # sort out the server option
             self.options.server = self.options.server.replace("localhost", "127.0.0.1")
 
             # create the rpc and client objects
             self.d = client.connect(self.options.server, self.options.port, self.options.username, self.options.password)
 
-            # We add the callback (in this case it's an errback, for error)
-            self.d.addErrback(self.on_connect_fail)
-            
             # We add the callback to the Deferred object we got from connect()
             self.d.addCallback(self.on_connect_success)
-            
+
+            # We add the callback (in this case it's an errback, for error)
+            self.d.addErrback(self.on_connect_fail)
+
             reactor.run()
 
         except Exception,e:
             self.logError("DelugeInfo Init:Unexpected error:" + e.__str__())
 
     def on_get_torrents_status(self,torrents_status):
-        
+
         self.torrents_status = torrents_status
-        
+
         #for torrentid in torrents_status:
             #print torrentid
             #torrent_status =  torrents_status[torrentid]
-        
+
         # Disconnect from the daemon once we successfully connect
         client.disconnect()
         # Stop the twisted main loop and exit
         reactor.stop()
-        
+
     # We create a callback function to be called upon a successful connection
     def on_connect_success(self,result):
         self.logInfo("Connection successful")
         client.core.get_torrents_status("","").addCallback(self.on_get_torrents_status)
-                
+
     # We create another callback function to be called when an error is encountered
     def on_connect_fail(self,result):
-        self.logError("ERROR:Connection failed! : "+result)
-        
+        self.logError("Connection failed! : %s" % result.getErrorMessage())
+        reactor.stop()
+
     def getTorrentTemplateOutput(self, template, name, state, totaldone, totalsize, progress, nofiles, downloadrate, uploadrate, eta, currentpeers, currentseeds, totalpeers, totalseeds, ratio):
 
         try:
@@ -546,7 +547,7 @@ def main():
 
     if options.version == True:
 
-        print >> sys.stdout,"conkyDeluge v.2.14"
+        print >> sys.stdout,"conkyDeluge v.2.14.1"
 
     else:
 
@@ -566,7 +567,8 @@ def main():
             print >> sys.stdout, "    infologfile:",options.infologfile
 
         delugeInfo = DelugeInfo(options)
-        delugeInfo.writeOutput()
+        if len(delugeInfo.torrents_status) > 0:
+            delugeInfo.writeOutput()
 
 if __name__ == '__main__':
     main()

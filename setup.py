@@ -32,7 +32,7 @@ def listfiles(*dirs):
 
 setup(
 		name             = 'conkydeluge',
-		version          = '2.14',
+		version          = '2.14.1',
 		description      = 'Conky Deluge',
 		long_description = "Deluge torrent info, for use in Conky",
 		author           = 'Mark Buck (Kaivalagi)',
