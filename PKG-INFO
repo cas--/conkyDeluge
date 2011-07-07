@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: conkydeluge
+Version: 2.14
+Summary: Conky Deluge
+Home-page: None
+Author: Mark Buck (Kaivalagi)
+Author-email: m_buck@hotmail.com
+License: GPLv3
+Description: Deluge torrent info, for use in Conky
+Platform: linux

@@ -1,0 +1,144 @@
+conkydeluge (2.14) hardy; urgency=low
+
+  * Updated to now have username and password capabilities for server comms
+  * Updated /usr/bin/ startup script to not used misused PYTHONPATH variable now
+    
+ -- Chuck Metcalfe <mobilediesel@gmail.com>  Fri, 23 April 2010 12:20:00 +0000
+
+conkydeluge (2.13) hardy; urgency=low
+
+  * Updated to handle new DelugeRPC async methods used in 1.2.0 onwards (will mean this script breaks for previous deluge version users)
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Sun, 18 Oct 2009 19:30:00 +0000
+ 
+conkydeluge (2.12) hardy; urgency=low
+
+  * Fixed issue with download rate text on output, now formatted correctly
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Wed, 1 July 2009 00:20:00 +0000
+ 
+conkydeluge (2.11) hardy; urgency=low
+
+  * Added --sortby option, takes either takes either "progress", "queue", "eta", "download", "upload" or "ratio". Also note that a torrent's state supersedes anything else for sorting, in the order, from top to bottom: downloading, seeding, queued, paused, unknown
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 30 Jun 2009 19:55:00 +0000
+
+conkydeluge (2.10) hardy; urgency=low
+
+  * Added missing import, whoops
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Wed, 03 June 2009 18:20:00 +0000
+
+conkydeluge (2.09) hardy; urgency=low
+
+  * Updated to expand ~ based template paths
+  * Fixed limit option based output
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 02 June 2009 08:00:00 +0000
+
+conkydeluge (2.08) hardy; urgency=low
+
+  * Refresh of package to fix incorrect dependancies for older versions of ubuntu
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Sun, 10 May 2009 12:50:00 +0000
+
+conkydeluge (2.07) jaunty; urgency=low
+
+  * Updated to retrieve data items for each torrent based on a finite list rather than all of them, this stops an error occurring with python 2.6 and xmlrpc in Jaunty
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Sat, 18 April 2009 22:50:00 +0000
+
+conkydeluge (2.06) intrepid; urgency=low
+
+  * Altered the ordering of the output to include state as well as progress, states are listed in the order downloading, seeding, paused, unknown
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Sat, 21 February 2008 18:50:00 +0000
+
+conkydeluge (2.05) intrepid; urgency=low
+
+  * Changed to use total_wanted stats (only selected parts of torrent) instead of total_size, fixes summary progress where partial downloads of torrents are in place
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Sun, 08 February 2008 13:50:00 +0000
+
+conkydeluge (2.04) intrepid; urgency=low
+
+  * Now handles when Deluge is not running, and skips doing template prep that isn't required
+  * Added --hidetorrentdetail option, so both all combinations of output can be output in one exec call
+  * Added <totaleta> to the summary, basically displaying the highest eta for all torrents
+  * Changed option tags from <...> to [...], so <eta> now needs to be [eta] in the template to work
+  * Updated example template and README
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Wed, 19 November 2008 20:50:00 +0000
+
+conkydeluge (2.03) intrepid; urgency=low
+
+  * Refactored and tidied up
+  * Updated README
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Mon, 10 November 2008 19:25:00 +0000
+
+conkydeluge (2.02) intrepid; urgency=low
+
+  * Updated to collect torrent data into a class list to allow sorting (highest to lowest progress)
+  * Added --limit option to restrict the number of torrents displayed
+  * Updated README
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Sun, 09 November 2008 19:25:00 +0000
+
+conkydeluge (2.01) intrepid; urgency=low
+
+  * Added currentpeers, currentseeds, totalpeers, totalseeds and ratio to the data available
+  * Updated to output text in utf-8 format, in case of strange characters used in torrent names etc
+  * Replaced the --downloadonly option with --activeonly, when used torrent output is only printed if there are active peers or seeds
+  * Renamed --template option to be called --torrenttemplate as it relates to individual torrent information
+  * Added --showsummary and --summarytemplate options to facilitate the displaying of summary information for all torrents. If --showsummary is used no torrent details are output. This is affected by the --activeonly option.
+  * Updated README and example files
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Mon, 06 November 2008 21:15:00 +0000
+
+conkydeluge (2.00) intrepid; urgency=low
+
+  * Updated README
+  * Package now for intrepid, starting at version 2.0
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Sun, 02 November 2008 13:50:00 +0000
+
+conkydeluge (1.05) hardy; urgency=low
+
+  * Updated error handling for when no torrent status data available, issues usually happen when half way through torrents output and a torrent is no longer there
+  * Added --errorlogfile and infologfile options, when set with a filepath, errors and info are appended to the filepath given
+  * Added --downloadsonly option to limit output to only currently active torrents in a downloading state
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 02 November 2008 13:50:00 +0000
+
+conkydeluge (1.04) hardy; urgency=low
+
+  * Updated to use "progress", "eta", "download_payload_rate", "upload_payload_rate" dictionary data to avoid invalid calculations
+  * --version now only returns version and doesn't try to display normal output too
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 17 October 2008 21:40:00 +0100
+
+conkydeluge (1.03) hardy; urgency=low
+
+  * Updated to import and use deluge sclient and common formatting functions, disabled deluge logging functions too
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 17 October 2008 18:50:00 +0100
+
+conkydeluge (1.02) hardy; urgency=low
+
+  * Added expected time of arrival (eta) as an output, can be used in the template with <eta>
+  * Updated README
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 14 October 2008 20:20:00 +0100
+
+conkydeluge (1.01) hardy; urgency=low
+
+  * Fixed progress % issue with multi-file torrents
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 13 October 2008 21:20:00 +0100
+
+conkydeluge (1.00) hardy; urgency=low
+
+  * Initial package
+
+ -- Mark Buck (Kaivalagi) <m_buck@hotmail.com>  Tue, 13 October 2008 19:50:00 +0100

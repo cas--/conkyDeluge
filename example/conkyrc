@@ -1,0 +1,123 @@
+# conky configuration
+# edited by kaivalagi
+
+# set to yes if you want Conky to be forked in the background
+background no
+
+# Use Xft?
+use_xft yes
+
+# Xft font when Xft is enabled
+xftfont Terminus:size=9
+
+# Text alpha when using Xft
+xftalpha 0.8
+
+# Update interval in seconds
+update_interval 1.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+own_window no
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 300 5
+maximum_width 300
+
+# Draw shades?
+draw_shades yes
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+draw_graph_borders yes
+
+# Stippled borders?
+stippled_borders 0
+
+# border margins
+border_margin 0
+
+# border width
+border_width 0
+
+# Default colors and also border colors
+default_color white
+default_shade_color black
+default_outline_color white
+
+# own window options
+own_window		yes
+own_window_transparent	yes
+own_window_type		override
+own_window_hints	undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Text alignment, other possible values are commented
+#alignment top_left
+#alignment top_right
+#alignment bottom_left
+alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 10
+gap_y 0
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer yes
+
+text_buffer_size 2048
+
+# colours
+color1 white
+# light blue
+color2 6892C6
+# orange
+color3 E77320
+# green
+color4 78BF39
+# red
+color5 CC0000
+
+# variable is given either in format $variable or in ${variable}. Latter
+# allows characters right after the variable and must be used in network
+# stuff because of an argument
+
+# stuff after 'TEXT' will be formatted on screen
+
+TEXT
+${color4}${font Terminus:style=Bold:size=14}@ ${font Terminus:style=Bold:size=11}Deluge${font}
+
+${color4}Template Output:
+${color1}${execpi 5 conkyDeluge --showsummary --summarytemplate=/usr/share/conkydeluge/example/conkyDelugeSummary.template}
+${color1}${execpi 5 conkyDeluge --torrenttemplate=/usr/share/conkydeluge/example/conkyDeluge.template}
+
+${color4}Standard Output:
+${voffset 5}${color1}${font}${execi 5 conkyDeluge --showsummary}
+${voffset 5}${color1}${font}${execi 5 conkyDeluge}
+

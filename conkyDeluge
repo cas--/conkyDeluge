@@ -1,0 +1,3 @@
+#! /bin/sh
+cd /usr/share/conkydeluge/
+/usr/bin/python /usr/share/conkydeluge/conkyDeluge.py "$@"

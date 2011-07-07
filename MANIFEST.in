@@ -1,0 +1,10 @@
+include AUTHORS
+include CHANGELOG
+include COPYING
+include README
+include setup.py
+include MANIFEST.in
+include conkyDeluge
+include conkyDeluge.py
+recursive-include example *
+

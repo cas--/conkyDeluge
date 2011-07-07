@@ -1,0 +1,136 @@
+Author: Mark Buck (Kaivalagi) <m_buck@hotmail.com>
+
+PREREQUISITES
+=============
+
+It is expected that the user is already familiar with Conky.
+
+Any conky specific help can be found by either visiting the conky website here:
+
+    http://conky.sourceforge.net
+
+Alternatively there is a large user base, various helpful posts are available
+at http://www.ubuntuforums.org
+
+For example, to see various incarnations of conky setups, or to ask technical
+questions you could go here:
+    
+        Post your .conkyrc files w/ screenshots
+
+        http://ubuntuforums.org/showthread.php?t=281865 
+
+If you are not familiar with conky there is help available here:
+
+    HOW TO: A Beginners Guide to Setting up Conky
+
+    http://ubuntuforums.org/showthread.php?t=867076
+
+
+EXAMPLE USE
+===========
+
+In the /usr/share/conkydeluge/example folder you'll find 2 files, conkyrc and
+conkyDeluge.template
+
+Conky can be run using these example files as follows:
+
+    conky -c /usr/share/conkydeluge/example/conkyrc &
+    
+Make sure Deluge is running first...
+
+
+COMMAND OPTIONS
+===============
+
+A break down of all the options available are below. The same details can be
+found by running conkyDeluge --help
+
+Usage: conkyDeluge [options]
+Options:
+  -h, --help            show this help message and exit
+  -s SERVER, --server=SERVER
+                        [default: 127.0.0.1] The server to connect to where
+                        the deluge core is running
+  -p PORT, --port=PORT  [default: 58846] The port to connect to where the
+                        deluge core is running
+  -U USERNAME, --username=USERNAME
+                        The username to use when connecting, can be left unset
+                        if none is required
+  -P PASSWORD, --password=PASSWORD
+                        The password to use when connecting, can be left unset
+                        if none is required
+  -S, --showsummary     Display summary output. This is affected by the
+                        --activeonly option.
+  -H, --hidetorrentdetail
+                        Hide torrent detail output, if used no torrent details
+                        are output.
+  -t FILE, --torrenttemplate=FILE
+                        Template file determining the format for each torrent.
+                        Use the following placeholders: [name], [state],
+                        [totaldone], [totalsize], [progress], [nofiles],
+                        [downloadrate], [uploadrate], [eta], [currentpeers],
+                        [currentseeds], [totalpeers], [totalseeds], [ratio].
+  -T FILE, --summarytemplate=FILE
+                        Template file determining the format for summary
+                        output. Use the following placeholders: [notorrents],
+                        [totalprogress], [totaldone], [totalsize],
+                        [totaldownloadrate], [totaluploadrate], [totaleta],
+                        [currentpeers], [currentseeds], [totalpeers],
+                        [totalseeds], [totalratio].
+  -a, --activeonly      If set only info for torrents in an active state will
+                        be displayed.
+  -l NUMBER, --limit=NUMBER
+                        [default: 0] Define the maximum number of torrents to
+                        display, zero means no limit.
+  -b SORTTYPE, --sortby=SORTTYPE
+                        Define the sort method for output, can be "progress",
+                        "queue", "eta", "download", "upload" and "ratio". Also
+                        note that a torrent's state supersedes anything else
+                        for sorting, in the order, from top to bottom:
+                        downloading, seeding, queued, paused, unknown)
+  -v, --verbose         Request verbose output, no a good idea when running
+                        through conky!
+  -V, --version         Displays the version of the script.
+  --errorlogfile=FILE   If a filepath is set, the script appends errors to the
+                        filepath.
+  --infologfile=FILE    If a filepath is set, the script appends info to the
+                        filepath.
+
+
+TEMPLATE FILES
+==============
+
+A template file is included in the example files and there are also details on
+the template option in the command options listed above.
+
+Note that you can combine standard font output with other fonts in a single
+template, but must use execp or execpi conky commands to do so.
+
+Please take a look at the example template provided. You will see that it uses
+text inside a "<" and a ">" as markers, these must be exact for the replacment
+event text to be output. Anything outside of these markers will be output as
+it looks in the template.
+
+
+FURTHER HELP
+============
+
+If you have an issue and are not sure, try running the same command in the
+terminal window and add the option --verbose, you should then see lots of
+information about what the script is doing, any warnings or errors should also
+be displayed.
+
+If after doing the above you are still stuck, further help can be found by 
+visiting this thread on ubuntuforums.org:
+
+	Conky Deluge Python Script
+	
+	http://ubuntuforums.org/showthread.php?p=5958806
+
+Note that it is best to post --verbose output of your script call, as well as
+the conkyrc you are using. This way the issue can be understood quickly and
+easily.
+
+ENJOY :)
+
+

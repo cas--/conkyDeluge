@@ -1,0 +1,5 @@
+${color1}[name]
+[state] - ${color3}ETA: ${color1}[eta]
+[totaldone]/[totalsize] - [progress]
+${color3}DL: ${color1}[downloadrate] ${color3}UL: ${color1}[uploadrate]
+

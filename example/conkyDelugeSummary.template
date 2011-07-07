@@ -1,0 +1,4 @@
+${color3}Total Torrents:${color1} [notorrents]
+${color1}[totaldone]/[totalsize] - [totalprogress]
+${color3}DL:${color1} [totaldownloadrate] ${color3}UL:${color1} [totaluploadrate]
+${color3}Peers:${font}${color1} [currentpeers] ${color3}Seeds:${color1} [currentseeds]
