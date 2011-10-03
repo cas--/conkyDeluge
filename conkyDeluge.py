@@ -489,7 +489,6 @@ class DelugeInfo:
                         summary_totalratio = "?.???"
 
                         output = self.getSummaryTemplateOutput(summarytemplate, summary_notorrent, summary_totalprogress, summary_totaldone, summary_totalsize, summary_totaldownloadrate, summary_totaluploadrate, summary_totaleta, summary_currentpeers, summary_currentseeds, summary_totalpeers, summary_totalseeds, summary_totalratio)
-                        output =  output.encode("utf-8")
 
                     if self.options.hidetorrentdetail == False:
 
