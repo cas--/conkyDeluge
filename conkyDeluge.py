@@ -8,6 +8,7 @@
 # Created: 13/10/2008
 #
 #Modified:
+#    25/08/2012    Fixed compatibility with latest Deluge GIT version, which requires installed global gettext function _() (by k2s)
 #    13/10/2008    Fixed progress % issue with multi-file torrents
 #    14/10/2008    Added expected time of arrival (eta) as an output, can be used in the template with <eta>
 #    17/10/2008    Updated to import and use deluge sclient and common formatting functions, disabled deluge logging functions too
@@ -40,6 +41,7 @@
 #    18/10/2009    Updated to handle new DelugeRPC async methods used in 1.2.0 onwards (will mean this script breaks for previous deluge version users)
 
 from datetime import datetime
+import gettext
 from deluge.common import ftime, fsize, fspeed
 from deluge.ui.client import client
 from twisted.internet import reactor
@@ -540,6 +542,7 @@ class DelugeInfo:
             fileoutput.close()
 
 def main():
+    gettext.install('conkyDeluge')    
 
     parser = CommandLineParser()
     (options, args) = parser.parse_args()
