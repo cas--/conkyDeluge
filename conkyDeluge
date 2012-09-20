@@ -1,3 +1,19 @@
 #! /bin/sh
 cd /usr/share/conkydeluge/
-/usr/bin/python /usr/share/conkydeluge/conkyDeluge.py "$@"
+
+### make sure we use python2
+PYTHONBIN=`which python2 2>/dev/null`
+if [ $? -ne 0 ]; then
+  PYTHONBIN=`which python 2>/dev/null`
+	if [ $? -ne 0 ]; then
+		echo "conkyDeluge requires python2"
+		exit 1
+	fi
+fi
+
+ret=`$PYTHONBIN -c 'import sys; print("%i" % (sys.hexversion<0x03000000))'`
+if [ $ret -eq 0 ]; then
+	echo "conkyDeluge requires python2, higher version is not supported"
+else 
+	$PYTHONBIN /usr/share/conkydeluge/conkyDeluge.py "$@"
+fi
